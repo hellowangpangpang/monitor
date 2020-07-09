@@ -2,7 +2,7 @@ let defalutConfig = {
     url: '',
     uuid: '',
     pid: '',
-    mode: 'development',
+    mode: process.env.NODE_ENV, // 默认为项目运行的环境
     ready: false,
     record: {
         resource_error: true,
@@ -19,9 +19,12 @@ let defalutConfig = {
     },
     // 配置是否需要上报的函数，会在report最后进行判断，可能会导致record配置项在特定情况失效
     checkNeedReport: function (log) {
+        if (log.isTest) {
+            return false;
+        }
         return true;
     },
-    // 
+    //
     formatLog: function (log) {
         return log;
     },

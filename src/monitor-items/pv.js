@@ -1,11 +1,9 @@
 import context from '../context/index';
-import debugLogger from '../utils/debugLogger';
+import { debugLogger } from '../utils/index';
 
 export default function () {
     let connection = navigator.connection;
     context.report.handleLog({
-        kind: 'business',
-        type: 'pv',
         effectiveType: connection.effectiveType, //网络环境
         rtt: connection.rtt, //往返时间
         screen: `${window.screen.width}x${window.screen.height}`, //设备分辨率
@@ -28,8 +26,7 @@ export default function () {
             } else if (duration > SEND_MILL) {
                 lastTime = Date.now();
                 const log = {
-                    kind: 'business',
-                    type: 'onlineDuration',
+                    code: 1002,
                     duration,
                 };
                 debugLogger('发送用户留存时间埋点, 埋点内容 => ', log);

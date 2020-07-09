@@ -1,5 +1,5 @@
 import context from '../context/index';
-import debugLogger from '../utils/debugLogger';
+import { debugLogger } from '../utils/index';
 
 export default function () {
     let XMLHttpRequest = window.XMLHttpRequest;
@@ -31,8 +31,6 @@ export default function () {
                 let statusText = this.statusText;
 
                 const log = {
-                    kind: 'stability', //稳定性指标
-                    type: 'xhr', //xhr
                     eventType: type, //load error abort
                     pathname: this.logData.url, //接口的url地址
                     status: status + '-' + statusText,

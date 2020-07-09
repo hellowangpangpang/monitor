@@ -1,6 +1,5 @@
 import context from './context/index';
-import { get } from 'lodash-es';
-import debugLogger from './utils/debugLogger';
+import { debugLogger, get } from './utils/index';
 
 function dig(logList = []) {
     if (!logList.length) return debugLogger('日志列表长度为0，无法上报');

@@ -1,6 +1,5 @@
 import context from '../context/index';
-import { get } from 'lodash-es';
-import debugLogger from '../utils/debugLogger';
+import { get, debugLogger } from '../utils/index';
 
 export default function () {
     const isNeedReport = get(context, ['config', 'record', 'blank']);
@@ -54,8 +53,6 @@ export default function () {
                 let centerElements = document.elementsFromPoint(window.innerWidth / 2, window.innerHeight / 2);
 
                 const log = {
-                    kind: 'stability',
-                    type: 'blank',
                     emptyPoints,
                     screen: window.screen.width + 'X' + window.screen.height,
                     viewPoint: window.innerWidth + 'X' + window.innerHeight,

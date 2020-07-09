@@ -1,7 +1,5 @@
-import getLastEvent from '../utils/getLastEvent';
-import getSelector from '../utils/getSelector';
 import context from '../context/index';
-import debugLogger from '../utils/debugLogger';
+import { debugLogger, getLastEvent, getSelector } from '../utils/index';
 
 export default function () {
     window.addEventListener(
@@ -11,8 +9,6 @@ export default function () {
             let log;
             if (event.target && (event.target.src || event.target.href)) {
                 log = {
-                    kind: 'stability', //监控指标大类
-                    type: 'error', // 小类型
                     errorType: 'resouceError', //JS执行错误
                     filename: event.target.src || event.target.href,
                     tagName: event.target.tagName.toLowerCase(), //SCRIPT
@@ -21,8 +17,6 @@ export default function () {
                 };
             } else {
                 log = {
-                    kind: 'stability', //监控指标大类
-                    type: 'error', // 小类型
                     errorType: 'jsError', //JS执行错误
                     message: event.message, //报错信息
                     filename: event.filename,
@@ -62,8 +56,6 @@ export default function () {
             }
 
             const log = {
-                kind: 'stability', //监控指标大类
-                type: 'error', // 小类型
                 errorType: 'promiseError', //JS执行错误
                 message, //报错信息
                 filename,

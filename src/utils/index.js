@@ -1,3 +1,8 @@
+import { merge, clone, get, isFunction } from 'lodash-es';
+import debugLogger from './debugLogger';
+import getLastEvent from './getLastEvent';
+import getSelector from './getSelector';
+
 /**
  * debounce
  *
@@ -7,7 +12,7 @@
  *
  * @return {Function}
  */
-export function debounce(func, delay, callback) {
+function debounce(func, delay, callback) {
     var timer;
 
     return function () {
@@ -23,3 +28,16 @@ export function debounce(func, delay, callback) {
         }, delay);
     };
 }
+
+export default {
+    merge,
+    clone,
+    get,
+    isFunction,
+    debounce,
+    debugLogger,
+    getLastEvent,
+    getSelector,
+};
+
+export { merge, clone, get, isFunction, debounce, debugLogger, getLastEvent, getSelector };

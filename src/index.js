@@ -1,10 +1,9 @@
-import { merge, clone, get, isFunction } from 'lodash-es';
 import DEFAULT_CONFIG from '../config/index';
-import debugLogger from './utils/debugLogger';
 import Report from './report/index';
 import context from './context/index';
 import * as monitorItems from './monitor-items/index';
 import dig from './dig';
+import { debugLogger, merge, clone, get, isFunction } from './utils/index';
 
 const _ = {
     merge,
@@ -112,7 +111,7 @@ function init() {
         stop: stopDig,
         reStart,
     };
-
+    
     debugLogger('monitor初始化完毕');
     debugLogger('monitor开始收集监控日志');
     debugLogger('等待设置monitor配置信息，设置完成之后，monitor会自动上报日志');
